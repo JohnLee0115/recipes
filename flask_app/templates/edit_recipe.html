@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe form</title>
+</head>
+
+<body>
+
+    <div class="head">
+        <h1>Edit Recipe!</h1>
+        <a href="">back to recipes</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="bot">
+        <form action="/recipes/update/{{one_recipe.id}}" method="post">
+            <div class="left">
+                <div>
+                    <label for="name">Name : </label>
+                    <input type="text" name="name" value="{{one_recipe.name}}">
+                </div>
+                <div>
+                    <label for="description">Description : </label>
+                    <input type="text" name="description" value="{{one_recipe.description}}">
+                </div>
+                <div>
+                    <label for="instruction">Instructions : </label>
+                    <input type="text" name="instruction" value="{{one_recipe.instruction}}">
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <label for="date_cooked">Date Cooked/Made : </label>
+                    <input type="date" name="date_cooked" value="{{one_recipe.date_cooked}}">
+                </div>
+                <div>
+                    <label for="under_thirty">Under 30 minutes?</label>
+                    {% if one_recipe.under_thirty == 1 %}
+                    <input type="radio" name="under_thirty" value="1" checked>
+                    <label for="under_thirty">Yes</label>
+                    <input type="radio" name="under_thirty" value="0">
+                    <label for="under_thirty">No</label>
+                    {% else %}
+                    <input type="radio" name="under_thirty" value="1">
+                    <label for="under_thirty">Yes</label>
+                    <input type="radio" name="under_thirty" value="0" checked>
+                    <label for="under_thirty">No</label>
+                    {% endif %}
+                </div>
+                <div>
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    
+</body>
+
+</html>

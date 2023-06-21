@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New recipe form</title>
+</head>
+
+<body>
+    <div class="head">
+        <h1>Add a New Recipe!</h1>
+        <a href="/recipes">back to recipes</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="bot">
+        <form action="/create_recipe" method="post">
+            <div class="left">
+                <div>
+                    <label for="name">Name : </label>
+                    <input type="text" name="name">
+                </div>
+                <div>
+                    <label for="description">Description : </label>
+                    <textarea name="description" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="instruction">Instructions : </label>
+                    <textarea name="instruction" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <label for="date_cooked">Date Cooked/Made : </label>
+                    <input type="date" name="date_cooked">
+                </div>
+                <div>
+                    <label for="under_thirty">Under 30 minutes?</label>
+                    <input type="radio" name="under_thirty" value="1">
+                    <label for="Yes">Yes</label>
+                    <input type="radio" name="under_thirty" value="0">
+                    <label for="No">No</label>
+                </div>
+                <div>
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    
+</body>
+
+</html>

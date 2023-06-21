@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Info Page</title>
+</head>
+
+<body>
+
+    <div class="head">
+        <h1>Welcome, {{one_user.first_name}}</h1>
+        <a href="/recipes">back to recipes</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="sub">
+        <h2>{{(one_recipe.name)}}</h2>
+        <p>Posted by : {{one_recipe.recipe_poster.first_name}} {{one_recipe.recipe_poster.last_name}}</p>
+    </div>
+    <div class="cont">
+        <div>
+            <label for="description">Description : </label>
+            <p>{{one_recipe.description}}</p>
+        </div>
+        <div>
+            <label for="under_thirty">Under 30 Minutes? </label>
+            {% if one_recipe.under_thirty == 1 %}
+            <p>Yes</p>
+            {% else %}
+            <p>No</p>
+            {% endif %}
+        </div>
+        <div>
+            <label for="instruction">Instructions : </label>
+            <p>{{one_recipe.instruction}}</p>
+        </div>
+        <div>
+            <label for="date_cooked">Date Made : </label>
+            <p>{{one_recipe.date_cooked}}</p>
+        </div>
+    </div>
+    
+</body>
+
+</html>
